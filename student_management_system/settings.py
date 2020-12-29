@@ -26,7 +26,7 @@ SECRET_KEY = '3ui8v-!inp$_=jr_l2)5xn3%(sl_-ke34+o9yf#7gh)%(*i4+1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['asjadstudentmanagementsystem.herokuapp.com']
+ALLOWED_HOSTS = ['asjadstudentmanagementsystem.herokuapp.com','127.0.0.1']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
@@ -85,8 +85,9 @@ WSGI_APPLICATION = 'student_management_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #=====Enable Only Making Project Live on Heroku====
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         #'ENGINE':'django.db.backends.mysql',
         #'NAME':'student_management_system',
         #'USER':'student_management_system',
@@ -144,7 +145,8 @@ EMAIL_BACKEND="django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH=os.path.join(BASE_DIR,"sent_mails")
 
 
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
-import dj_database_url
-prod_db=dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+#Enable Only Making Project Live on Heroku
+# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+# import dj_database_url
+# prod_db=dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
